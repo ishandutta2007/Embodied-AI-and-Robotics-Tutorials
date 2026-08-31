@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/banner.svg" alt="Embodied AI and Robotics Tutorial Banner" width="100%" />
+</p>
+
 # Embodied AI and Robotics Tutorial
 
 Welcome to the Embodied AI and Robotics Tutorial! This comprehensive guide is designed to introduce you to the fascinating intersection of artificial intelligence and physical systems. Over the course of these chapters, you will learn the fundamental concepts, practical techniques, and cutting-edge applications that enable intelligent agents to perceive, reason, and act in the real world.

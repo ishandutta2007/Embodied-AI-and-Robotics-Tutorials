@@ -1,0 +1,270 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070b19" />
+      <stop offset="50%" stop-color="#0c142b" />
+      <stop offset="100%" stop-color="#060914" />
+    </linearGradient>
+
+    <!-- Accent Gradient Cyan-Blue -->
+    <linearGradient id="cyan-blue" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00f2fe" />
+      <stop offset="100%" stop-color="#4facfe" />
+    </linearGradient>
+
+    <!-- Accent Gradient Neon Purple -->
+    <linearGradient id="purple-pink" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7928CA" />
+      <stop offset="100%" stop-color="#FF0080" />
+    </linearGradient>
+
+    <!-- Accent Gradient Green -->
+    <linearGradient id="emerald-glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00FF87" />
+      <stop offset="100%" stop-color="#60EFFF" />
+    </linearGradient>
+
+    <!-- Text Gradient -->
+    <linearGradient id="title-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="40%" stop-color="#E2F1FF" />
+      <stop offset="80%" stop-color="#38BDF8" />
+      <stop offset="100%" stop-color="#818CF8" />
+    </linearGradient>
+
+    <!-- Glow Filters -->
+    <filter id="glow-cyan" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <filter id="glow-core" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="10" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <!-- Grid Pattern -->
+    <pattern id="cyber-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(56, 189, 248, 0.07)" stroke-width="1" />
+    </pattern>
+
+    <!-- Dot Pattern -->
+    <pattern id="dot-grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="rgba(255, 255, 255, 0.05)" />
+    </pattern>
+  </defs>
+
+  <style>
+    .pulse-glow {
+      animation: pulse 3s ease-in-out infinite;
+    }
+    .rotate-radar {
+      transform-origin: 1010px 180px;
+      animation: rotate-cw 12s linear infinite;
+    }
+    .rotate-counter {
+      transform-origin: 1010px 180px;
+      animation: rotate-ccw 18s linear infinite;
+    }
+    .dash-flow {
+      stroke-dasharray: 8, 12;
+      animation: dash 4s linear infinite;
+    }
+    .dash-flow-fast {
+      stroke-dasharray: 6, 8;
+      animation: dash 2s linear infinite;
+    }
+    .scan-vertical {
+      animation: scanline 4s ease-in-out infinite alternate;
+    }
+    .node-pulse {
+      animation: node-flicker 2.5s ease-in-out infinite alternate;
+    }
+    .float-particle {
+      animation: float 5s ease-in-out infinite alternate;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.35; transform: scale(1); }
+      50% { opacity: 0.75; transform: scale(1.04); }
+    }
+    @keyframes rotate-cw {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes rotate-ccw {
+      from { transform: rotate(360deg); }
+      to { transform: rotate(0deg); }
+    }
+    @keyframes dash {
+      to { stroke-dashoffset: -40; }
+    }
+    @keyframes scanline {
+      0% { transform: translateY(0px); opacity: 0.1; }
+      50% { opacity: 0.7; }
+      100% { transform: translateY(320px); opacity: 0.1; }
+    }
+    @keyframes node-flicker {
+      0% { r: 3.5px; opacity: 0.4; filter: drop-shadow(0 0 2px #00f2fe); }
+      50% { r: 5.5px; opacity: 1; filter: drop-shadow(0 0 8px #00f2fe); }
+      100% { r: 4px; opacity: 0.6; filter: drop-shadow(0 0 3px #00f2fe); }
+    }
+    @keyframes float {
+      0% { transform: translateY(0px) translateX(0px); }
+      50% { transform: translateY(-8px) translateX(4px); }
+      100% { transform: translateY(4px) translateX(-4px); }
+    }
+  </style>
+
+  <!-- Background Base -->
+  <rect width="1200" height="360" rx="16" fill="url(#bg-grad)" />
+  <rect width="1200" height="360" rx="16" fill="url(#cyber-grid)" />
+  <rect width="1200" height="360" rx="16" fill="url(#dot-grid)" />
+  
+  <!-- Outer Glow Border -->
+  <rect width="1196" height="356" x="2" y="2" rx="15" fill="none" stroke="rgba(56, 189, 248, 0.25)" stroke-width="1.5" />
+  <rect width="1192" height="352" x="4" y="4" rx="14" fill="none" stroke="rgba(121, 40, 202, 0.15)" stroke-width="1" />
+
+  <!-- Ambient Light Blobs -->
+  <circle cx="1010" cy="180" r="160" fill="#00f2fe" opacity="0.12" filter="url(#glow-core)" class="pulse-glow" style="transform-origin: 1010px 180px;" />
+  <circle cx="200" cy="80" r="120" fill="#7928ca" opacity="0.1" filter="url(#glow-core)" class="pulse-glow" style="transform-origin: 200px 80px; animation-delay: 1.5s;" />
+
+  <!-- Animated Neural & Circuit Network (Left to Right Flow) -->
+  <g opacity="0.65">
+    <!-- Horizontal Bus Lines -->
+    <path d="M 60 60 L 320 60 L 370 110 L 640 110" fill="none" stroke="rgba(56, 189, 248, 0.25)" stroke-width="1.5" />
+    <path d="M 60 60 L 320 60 L 370 110 L 640 110" fill="none" stroke="url(#cyan-blue)" stroke-width="2" class="dash-flow" />
+
+    <path d="M 40 300 L 260 300 L 310 250 L 700 250" fill="none" stroke="rgba(121, 40, 202, 0.3)" stroke-width="1.5" />
+    <path d="M 40 300 L 260 300 L 310 250 L 700 250" fill="none" stroke="url(#purple-pink)" stroke-width="2" class="dash-flow-fast" />
+
+    <!-- Circuit Branching -->
+    <path d="M 370 110 L 410 150 L 520 150" fill="none" stroke="rgba(0, 255, 135, 0.35)" stroke-width="1.5" stroke-dasharray="4, 4" />
+    <path d="M 310 250 L 350 210 L 480 210" fill="none" stroke="rgba(56, 189, 248, 0.4)" stroke-width="1.5" stroke-dasharray="5, 5" />
+  </g>
+
+  <!-- Interactive/Dynamic Nodes -->
+  <g>
+    <circle cx="320" cy="60" r="4" fill="#00f2fe" class="node-pulse" />
+    <circle cx="370" cy="110" r="5" fill="#38bdf8" class="node-pulse" style="animation-delay: 0.6s;" />
+    <circle cx="640" cy="110" r="4" fill="#00FF87" class="node-pulse" style="animation-delay: 1.2s;" />
+    <circle cx="260" cy="300" r="4.5" fill="#FF0080" class="node-pulse" style="animation-delay: 0.4s;" />
+    <circle cx="310" cy="250" r="5" fill="#7928CA" class="node-pulse" style="animation-delay: 1s;" />
+    <circle cx="520" cy="150" r="4" fill="#00FF87" class="node-pulse" style="animation-delay: 1.8s;" />
+    <circle cx="480" cy="210" r="4" fill="#38bdf8" class="node-pulse" style="animation-delay: 1.4s;" />
+  </g>
+
+  <!-- Scanning Line Effect -->
+  <line x1="40" y1="20" x2="780" y2="20" stroke="url(#cyan-blue)" stroke-width="1.5" opacity="0.4" class="scan-vertical" filter="url(#glow-cyan)" />
+
+  <!-- Left/Center Branding & Typography -->
+  <g transform="translate(80, 0)">
+    
+    <!-- Top Pill / Badge -->
+    <g transform="translate(0, 68)">
+      <rect width="258" height="30" rx="15" fill="rgba(56, 189, 248, 0.1)" stroke="rgba(56, 189, 248, 0.4)" stroke-width="1" />
+      <circle cx="15" cy="15" r="4" fill="#00FF87" class="node-pulse" />
+      <text x="28" y="19.5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif" font-size="11.5" font-weight="700" fill="#38BDF8" letter-spacing="1.5">KNOWLEDGE REPOSITORY</text>
+    </g>
+
+    <!-- Main Title -->
+    <text x="0" y="152" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Montserrat', sans-serif" font-size="46" font-weight="900" fill="url(#title-grad)" letter-spacing="-0.5">
+      Embodied AI &amp; Robotics
+    </text>
+
+    <!-- Subtitle / Mission Statement -->
+    <text x="2" y="196" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16.5" font-weight="400" fill="#94A3B8" letter-spacing="0.2">
+      From Neural Foundations &amp; Perception to Real-World Control &amp; Manipulation
+    </text>
+
+    <!-- Feature Pillars (Pills) -->
+    <g transform="translate(0, 236)">
+      <!-- Pillar 1: Perception -->
+      <g transform="translate(0, 0)">
+        <rect width="140" height="36" rx="8" fill="rgba(15, 23, 42, 0.8)" stroke="rgba(56, 189, 248, 0.35)" stroke-width="1.2" />
+        <circle cx="18" cy="18" r="4" fill="#38BDF8" />
+        <text x="32" y="22.5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600" fill="#E2E8F0">Perception</text>
+      </g>
+
+      <!-- Pillar 2: Reasoning -->
+      <g transform="translate(152, 0)">
+        <rect width="140" height="36" rx="8" fill="rgba(15, 23, 42, 0.8)" stroke="rgba(121, 40, 202, 0.45)" stroke-width="1.2" />
+        <circle cx="18" cy="18" r="4" fill="#C084FC" />
+        <text x="32" y="22.5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600" fill="#E2E8F0">Cognition</text>
+      </g>
+
+      <!-- Pillar 3: Action & Control -->
+      <g transform="translate(304, 0)">
+        <rect width="168" height="36" rx="8" fill="rgba(15, 23, 42, 0.8)" stroke="rgba(0, 255, 135, 0.35)" stroke-width="1.2" />
+        <circle cx="18" cy="18" r="4" fill="#00FF87" />
+        <text x="32" y="22.5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600" fill="#E2E8F0">Action &amp; Control</text>
+      </g>
+
+      <!-- Pillar 4: Foundation Models -->
+      <g transform="translate(484, 0)">
+        <rect width="176" height="36" rx="8" fill="rgba(15, 23, 42, 0.8)" stroke="rgba(244, 114, 182, 0.4)" stroke-width="1.2" />
+        <circle cx="18" cy="18" r="4" fill="#F472B6" />
+        <text x="32" y="22.5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600" fill="#E2E8F0">Robotic VLA Models</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Right Section: Cybernetic Robotic Sensor & Core Visualization -->
+  <g id="robot-core">
+    <!-- Outer Radar/LiDAR Coordinate Ring -->
+    <circle cx="1010" cy="180" r="130" fill="none" stroke="rgba(56, 189, 248, 0.12)" stroke-width="1.5" stroke-dasharray="2, 6" />
+    
+    <!-- Rotating Tech Ring 1 (Clockwise) -->
+    <g class="rotate-radar">
+      <circle cx="1010" cy="180" r="110" fill="none" stroke="rgba(56, 189, 248, 0.3)" stroke-width="1.5" stroke-dasharray="40 20 80 30" />
+      <circle cx="1010" cy="70" r="3.5" fill="#00f2fe" filter="url(#glow-cyan)" />
+      <circle cx="1120" cy="180" r="3.5" fill="#38bdf8" />
+    </g>
+
+    <!-- Rotating Tech Ring 2 (Counter-Clockwise) -->
+    <g class="rotate-counter">
+      <circle cx="1010" cy="180" r="86" fill="none" stroke="rgba(121, 40, 202, 0.4)" stroke-width="2" stroke-dasharray="60 40 20 40" />
+      <polygon points="1010,94 1014,102 1006,102" fill="#FF0080" />
+      <polygon points="1010,266 1014,258 1006,258" fill="#7928CA" />
+    </g>
+
+    <!-- Inner Target Crosshairs -->
+    <line x1="1010" y1="80" x2="1010" y2="280" stroke="rgba(56, 189, 248, 0.2)" stroke-width="1" stroke-dasharray="4, 4" />
+    <line x1="910" y1="180" x2="1110" y2="180" stroke="rgba(56, 189, 248, 0.2)" stroke-width="1" stroke-dasharray="4, 4" />
+
+    <!-- Central Robotic / Embodied AI Core -->
+    <circle cx="1010" cy="180" r="54" fill="rgba(12, 20, 43, 0.9)" stroke="url(#cyan-blue)" stroke-width="2.5" filter="url(#glow-cyan)" />
+    
+    <!-- Central Robotic Hexagon / AI Brain Emblem -->
+    <g transform="translate(1010, 180) scale(0.9)">
+      <!-- Hexagon Core -->
+      <polygon points="0,-32 28,-16 28,16 0,32 -28,16 -28,-16" fill="rgba(15, 23, 42, 0.95)" stroke="url(#emerald-glow)" stroke-width="2" />
+      
+      <!-- Robotic Sensor Nodes inside core -->
+      <circle cx="0" cy="0" r="9" fill="url(#cyan-blue)" class="node-pulse" />
+      
+      <!-- Spatial Ray Links -->
+      <line x1="0" y1="-32" x2="0" y2="-9" stroke="#38bdf8" stroke-width="1.5" />
+      <line x1="28" y1="16" x2="7" y2="5" stroke="#00FF87" stroke-width="1.5" />
+      <line x1="-28" y1="16" x2="-7" y2="5" stroke="#FF0080" stroke-width="1.5" />
+      
+      <circle cx="0" cy="-20" r="2.5" fill="#ffffff" />
+      <circle cx="16" cy="10" r="2.5" fill="#ffffff" />
+      <circle cx="-16" cy="10" r="2.5" fill="#ffffff" />
+    </g>
+
+    <!-- Floating Data Nodes / Satellites -->
+    <g class="float-particle">
+      <circle cx="890" cy="100" r="3" fill="#00f2fe" opacity="0.8" />
+      <line x1="890" y1="100" x2="930" y2="130" stroke="rgba(0, 242, 254, 0.3)" stroke-width="1" stroke-dasharray="2, 2" />
+      <circle cx="930" cy="130" r="2" fill="#38bdf8" />
+    </g>
+    
+    <g class="float-particle" style="animation-delay: 2s;">
+      <circle cx="1130" cy="270" r="3" fill="#FF0080" opacity="0.8" />
+      <line x1="1130" y1="270" x2="1080" y2="240" stroke="rgba(255, 0, 128, 0.3)" stroke-width="1" stroke-dasharray="2, 2" />
+      <circle cx="1080" cy="240" r="2" fill="#7928CA" />
+    </g>
+  </g>
+</svg>
